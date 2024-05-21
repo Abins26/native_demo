@@ -2,10 +2,11 @@ import React from 'react'
 import {StyleSheet, Text, View } from 'react-native'
 
 function Navbar() {
+  
   return (
 
 <View style={styles.container}>
-    <Text style={styles.text1}>Home</Text>
+    <Text style={styles.text1}>Home Navbar</Text>
 </View>
 );
 }
@@ -25,9 +26,6 @@ const styles = StyleSheet.create({
       fontSize:25,
       fontWeight:'800',
     },
-  
-    
-   
   
   });
   
