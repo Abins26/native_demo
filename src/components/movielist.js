@@ -133,74 +133,93 @@
 
 // import { Link } from 'expo-router';
 // import { SliderBox } from "react-native-image-slider-box";
+
 import {SafeAreaView, StyleSheet, Text, View ,Image, ImageBackground, ScrollView} from 'react-native';
 import { useState,useEffect } from 'react'; 
 import axios from 'axios';
 
 export default function Movielist() {
   const [data, setData] = useState([]);
+const[index,setIndex]=useState(0);
   const getData = async () => {
-    try{
+    try {
       const resp = await axios.get('https://api.sampleapis.com/movies/animation');
-      const data1 = await resp.data
-      setData(data1);
-    }catch(error){
+      setData(resp.data);
+    } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
-  // console.log(data)
 
   useEffect(() => {
     getData();
   }, []);
+
+
   return (
     // <SafeAreaView style={styles.safeArea}>
 
       <View style={styles.container}>
-        <Text style={styles.text}>Welcome to Homepage </Text>
+        {/* <Text style={styles.text}>Welcome to Homepage </Text> */}
         <Text style={styles.cardheading}>Latest Movies</Text>
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={true} style={styles.cardcontainer} >
-          <View style={styles.cardRow}>
-            {data.map((movies, index) => (
-              <View key={index} style={styles.cards}>
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={styles.cardcontainer} >
+          {/* <View style={styles.cardRow}> */}
+            {/* {
+              data?.map((v,i)=>{
+                console.log(v,"---------",i);
+
+                return(
+                  <Text style={{
+                    position:'absolute',
+                    height:50,
+                    color:'red',
+                    fontWeight:'bold'
+                  }}>{String("aaaaaaaaaaaaaaaaaa",i)}</Text>
+                )
+              })
+            } */}
                 {/* <Text>{movies.id}</Text> */}
+                  {/* <Image/> */}
+            {data.map((movies, i) => (
+              <View key={i} style={styles.cards}> 
                 <Image source={{ uri: movies.posterURL }} style={styles.cardImage} />
-                  <Image/>
 
               </View>
-            ))}
+             ))}
          
-          </View>
+          {/* </View> */}
 
         </ScrollView>
       </View>
 
-    // </SafeAreaView>
+    //  {/* </SafeAreaView> */}
   );
 }
 
 const styles = StyleSheet.create({
-
+// safeArea:{
+// // backgroundColor:"white"
+// },
   container: {
     flex: 1,
-    backgroundColor:'black',
-    height:250,
+    backgroundColor:'blue',
+    height:"auto",
     // Color: '',
     // alignItems: 'center',
     // justifyContent: 'center',
+    width:900
   },
 
   text:{
-    color:'red',
+    color:'white',
     fontSize:25,
-    fontWeight:'800',
-    width:350
+    fontWeight:'500',
+    // width:950
   },
 
   cardcontainer:{
     // paddingHorizontal:0
     backgroundColor:"gray",
-    width:"100%",  //------------------------>50%
+    width:"auto",  //------------------------>50%
     // paddingLeft:0
 
   },
@@ -210,11 +229,12 @@ const styles = StyleSheet.create({
     fontWeight:"semibold",
     paddingHorizontal:5,
     width:200,
-    color:"lightblue",
-    backgroundColor:"yellow"
+    color:"white",
+    backgroundColor:"skyblue"
   },
   cardRow:{
-    flexDirection:'row'
+    // flexDirection:'row'
+    position:"absolute"
   },
   cards:{
       // backgroundColor:"green",

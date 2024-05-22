@@ -28,6 +28,7 @@
 //       <Image style={styles.logo} source={disney}/>
       {/* <Image style={styles.reactlogo} source={{ uri: 'https://reactnative.dev/img/tiny_logo.png',}}/> */}
 
+// import { Tabs } from 'expo-router'
 //     </View>
 // </SafeAreaView>
 // );
@@ -61,3 +62,14 @@
 //   }
 
 // });
+
+// import React from 'react'
+// import { NavigationContainer } from '@react-navigation/native';
+// import Tabs from './src/Screens/Tab';
+
+// export default function App() {
+//   return
+
+//     //   <Tabs/>
+    
+// };
